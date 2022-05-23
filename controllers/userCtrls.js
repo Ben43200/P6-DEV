@@ -1,4 +1,7 @@
+// const mongoose = require('mongoose');
+
 const bcrypt = require('bcrypt');
+// const app = require('../app');
 const User = require('../models/User')
 
 
@@ -10,10 +13,11 @@ bcrypt.hash(req.body.password, 10)
   const user = new User({
     email: req.body.email,
     password: hash
+    
   });
   user.save()
   .then(() => res.status(201).json({ message: 'Utilisateur crée !'})
-  .catch(error => res.status(400).json({ error})));
+  .catch(error => res.status(400).json({ error })));
 
 })
 .catch( error => res.status(500).json({ error }));

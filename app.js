@@ -38,8 +38,12 @@
 ///////////**********/////// */
 const express = require('express');
 const mongoose = require('mongoose');
-const router = require('./routes/userRoute');
-const userRoutes = require('./routes/userRoute');
+const User = require('./models/User');
+// const User = require('./models/User')
+// const sauce = require('./models/ModelsSauce')
+// const User = require('./models/User');
+// const router = require('./routes/userRoute');
+// const userRoutes = require('./routes/userRoute');
 
 mongoose.connect('mongodb+srv://projet6:gnwJQvj5w1rkTQyc@cluster0.uz4fu.mongodb.net/exercices?retryWrites=true&w=majority',
   {  useNewUrlParser: true,
@@ -56,26 +60,46 @@ app.use((req, res, next) => {
   });
   
 
+
+
+// app.use((req, res, next) => {
+//   res.status(201);
+//   next();
+// });
+
 app.use((req, res, next) => {
-  console.log('Requête reçue !');
+res.json({ message: 'test ok'})
+
   next();
 });
 
-app.use((req, res, next) => {
-  res.status(201);
-  next();
-});
 
-app.use((req, res, next) => {
-  res.json({ message: 'Votre requête a bien été reçue !' });
-  next();
-});
 
-app.use((req, res, next) => {
-  console.log('Réponse envoyée avec succès !');
-  next();
-});
 
-app.use('api/auth', userRoutes);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = app;
+

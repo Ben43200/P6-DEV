@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
+
 
 
 
@@ -20,4 +22,7 @@ const  sauceSchema = new mongoose.Schema({
     usersDisliked: { type: Array, required: true },
   });
 
-  module.exports = mongoose.model('Sauce', sauceSchema);
+
+    sauceSchema.plugin(uniqueValidator);
+
+  module.exports = mongoose.model('Sauce',sauceSchema);

@@ -4,9 +4,9 @@ const router = express.Router();
 const sauceCtrl = require('../controllers/sauceCtrls');
 
 router.get('/', sauceCtrl.getAllSauce);
-router.post('/sauces', sauceCtrl.createSauce);
-router.get('/sauces/:id', sauceCtrl.getOneSauce);
-router.put('/sauces/:id', sauceCtrl.modifySauce);
-router.delete('/sauces/:id', sauceCtrl.deleteSauce);
+router.post('/', sauceCtrl.createSauce);
+router.get('/:id', sauceCtrl.getOneSauce);
+router.put('/:id', sauceCtrl.modifySauce);
+router.delete('/:id', sauceCtrl.deleteSauce);
 
 module.exports = router;

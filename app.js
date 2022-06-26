@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -8,6 +9,7 @@ const sauceRoutes = require('./routes/sauceRoute');
 
 mongoose
   .connect(process.env.DATABASE)
+  // .connect('mongodb+srv://projet6:gnwJQvj5w1rkTQyc@cluster0.uz4fu.mongodb.net/exercices?retryWrites=true&w=majority')
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 

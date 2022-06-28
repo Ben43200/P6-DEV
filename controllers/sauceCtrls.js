@@ -8,6 +8,7 @@ exports.createSauce = async (req, res, next) => {
   try {
     const sauceObject = JSON.parse(req.body.sauce);
     delete sauceObject._id;
+
     const sauce = new Sauce({
       ...sauceObject,
       userId: req.authentifiedUserId,
@@ -18,12 +19,18 @@ exports.createSauce = async (req, res, next) => {
       dislikes: 0,
       usersLiked: [],
       usersDisliked: [],
-      // imageUrl: `${req.protocol}://${req.get('host')}/images/${
-      //   req.file.filename
-      // }`,
-      // userId: req.auth.userId,
     });
-    // console.log(sauce);
+    console.log({
+      ...sauceObject,
+      userId: req.authentifiedUserId,
+      imageUrl: `${req.protocol}://${req.get('host')}/images/${
+        req.file.filename
+      }`,
+      likes: 0,
+      dislikes: 0,
+      usersLiked: [],
+      usersDisliked: [],
+    });
     await sauce.save();
     res.status(201).json({ message: 'Objet enregistré !' });
   } catch (error) {

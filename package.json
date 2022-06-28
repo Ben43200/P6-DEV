@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "nodemon": "npx nodemon"
+    "nodemon": "npx nodemon -e js,json"
   },
   "author": "",
   "license": "ISC",

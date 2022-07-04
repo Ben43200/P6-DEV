@@ -4,6 +4,7 @@ const fs = require('fs');
 
 const Sauce = require('../models/Sauce');
 
+
 exports.createSauce = async (req, res, next) => {
   try {
     const sauceObject = JSON.parse(req.body.sauce);
@@ -87,13 +88,16 @@ exports.getAllSauce = (req, res, next) => {
 
 
 exports.likeDislike = (req, res, next) => {
+
   // Pour la route READ = Ajout/suppression d'un like / dislike à une sauce
   // Like présent dans le body
   let like = req.body.like
   // On prend le userID
-  let userId = req.body.userId
+  let userId = req.authentifiedUserId
   // On prend l'id de la sauce
   let sauceId = req.params.id
+
+  console.log(like,userId, sauceId)
 
   if (like === 1) { // Si il s'agit d'un like
     Sauce.updateOne({
@@ -150,7 +154,7 @@ exports.likeDislike = (req, res, next) => {
               },
               $inc: {
                 likes: -1
-              }, // On incrémente de -1
+              }, // On décrémente de -1
             })
             .then(() => res.status(200).json({
               message: 'Like retiré !'
@@ -168,7 +172,7 @@ exports.likeDislike = (req, res, next) => {
               },
               $inc: {
                 dislikes: -1
-              }, // On incrémente de -1
+              }, // On décrémente de -1
             })
             .then(() => res.status(200).json({
               message: 'Dislike retiré !'

@@ -38,11 +38,6 @@ exports.signup = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
 
-
-
-
-
-
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email })
   .then( user => {
@@ -54,10 +49,12 @@ exports.login = (req, res, next) => {
       if(!valid) {
         return res.status(401).json({ error: 'Mot de passe incorrect !'});
       }
+      console.log(user)
       res.status(200).json({
-        userId: user._Id,
+        userId: user._id,
         token: jwt.sign(
           { userId: user._id },
+          //@ts-ignore
           process.env.JWT_PASS,
           { expiresIn: '24h' }
         )

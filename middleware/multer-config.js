@@ -1,3 +1,8 @@
+/**
+ * @typedef {Object}  multerRequest
+ * @property {Object} file
+ */
+
 const multer = require('multer');
 
 const MIME_TYPES = {

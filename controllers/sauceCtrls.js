@@ -1,10 +1,23 @@
-// in controllers/stuff.js
-const fs = require('fs');
-// const sauce = require('../models/ModelsSauce');
+/**
+ * @typedef {import("express").Request} request
+ * @typedef {import("express").Response} response
+ * @typedef {import("express").NextFunction} nextFunction
+ * @typedef {import("../middleware/auth").authentifiedRequest} authentifiedRequest
+ * @typedef {import("../middleware/multer-config").multerRequest} multerRequest
+ */
 
+const fs = require('fs');
 const Sauce = require('../models/Sauce');
 
-
+/**
+ * ajoute une sauce
+ *
+ * @param {authentifiedRequest & multerRequest} req
+ * @param {response} res
+ * @param {nextFunction} next
+ *
+ * @return  {Promise.<void>}
+ */
 exports.createSauce = async (req, res, next) => {
   try {
     const sauceObject = JSON.parse(req.body.sauce);

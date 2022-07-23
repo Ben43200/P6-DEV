@@ -1,5 +1,22 @@
+/**
+ * @typedef {import("express").Request} request
+ * @typedef {import("express").Response} response
+ * @typedef {import("express").NextFunction} nextFunction
+ * @typedef {import("../middleware/auth").authentifiedRequest} authentifiedRequest
+ * @typedef {import("../middleware/multer-config").multerRequest} multerRequest
+ * @typedef {import("../controllers/saucectrls").createSauce} createSauce
+ *
+ * @typedef {import("../controllers/saucectrls").getOneSauce} getOneSauce
+ * @typedef {import("../controllers/saucectrls").modifySauce} modifySauce
+ * @typedef {import("../controllers/saucectrls").deleteSauce} deleteSauce
+ */
+
+
+
+
 const express = require('express');
-const router = express.Router();
+const router = express.Router(); 
+
 
 
 

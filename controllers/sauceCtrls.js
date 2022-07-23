@@ -4,6 +4,10 @@
  * @typedef {import("express").NextFunction} nextFunction
  * @typedef {import("../middleware/auth").authentifiedRequest} authentifiedRequest
  * @typedef {import("../middleware/multer-config").multerRequest} multerRequest
+ * 
+ * @typedef {Object} idSauceInParams
+ * @property {Object} params
+ * @property {String} params.id   l'id de la sauce
  */
 
 const fs = require('fs');
@@ -41,6 +45,15 @@ exports.createSauce = async (req, res, next) => {
   }
 };
 
+/**
+ * obtenir les propriétés de la sauce
+ *
+ * @param   {request & idSauceInParams}  req 
+ * @param   {response}  res 
+ * @param   {nextFunction}  next 
+ *
+ * @return  {Promise.<void>}       retourne  les informations  de la sauce
+ */
 exports.getOneSauce = async (req, res, next) => {
   try {
     const sauce = await Sauce.findOne({
@@ -54,6 +67,15 @@ exports.getOneSauce = async (req, res, next) => {
   }
 };
 
+/**
+ * ajoute une sauce
+ *
+ * @param {request & idSauceInParams & multerRequest} req
+ * @param {response} res
+ * @param {nextFunction} next
+ *
+ * @return  {void}
+ */
 exports.modifySauce = (req, res, next) => {
   const sauceObject = req.file
     ? {
@@ -70,6 +92,7 @@ exports.modifySauce = (req, res, next) => {
     .then(() => res.status(200).json({ message: 'Objet modifié !' }))
     .catch((error) => res.status(400).json({ error }));
 };
+
 
 exports.deleteSauce = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })

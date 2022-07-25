@@ -16,8 +16,7 @@ const jwt = require('jsonwebtoken');
 module.exports = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(' ')[1];
-    //@ts-ignore
-    const decodedToken = jwt.verify(token, process.env.JWT_PASS);
+    const decodedToken = jwt.verify(token, process.env["JWT_PASS"]);
     // @ts-ignore
     const userId = decodedToken.userId;
     if (req.body.userId && req.body.userId !== userId) {

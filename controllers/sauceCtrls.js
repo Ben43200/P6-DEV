@@ -10,8 +10,8 @@
  * @property {String} params.id   l'id de la sauce
  * 
  * @typedef {Object} idlike
- * @property {object} params
- * @property {String} params.id   l'id du like 
+ * @property {object} body
+ * @property {Number} body.like   Si like = 1, l'utilisateur aime (= like) la sauce. Si like = 0, l'utilisateur annule son like ou son dislike. Si like = -1, l'utilisateur n'aime pas
  * 
  */
 
@@ -140,13 +140,11 @@ exports.getAllSauce = (req, res, next) => {
 
 /**
  *  gestion des likes
- * @param  {request & idlike & userId & idSauceInParams} req
+ * @param  {authentifiedRequest & idlike & idSauceInParams} req
  * @param {response} res 
  * @param {nextFunction} next 
  * @return {void} 
  */
-
-//@ts-ignore
 exports.likeDislike = (req, res, next) => {
 
   // Pour la route READ = Ajout/suppression d'un like / dislike à une sauce

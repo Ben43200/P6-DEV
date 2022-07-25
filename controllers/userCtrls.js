@@ -1,15 +1,14 @@
 
 /**
- * /**
  * @typedef {import("express").Request} request
  * @typedef {import("express").Response} response
  * @typedef {import("express").NextFunction} nextFunction
 
  * @typedef {object}  user
- * @property {string} name The name of the email
- * @property  {string} password 
+ * @typedef {object}  body
+ * @property {string} body.name The name of the email
+ * @property  {string} body.password 
  * 
- 
  *  */
 
   
@@ -30,7 +29,6 @@ const User = require('../models/User');
  * @param {nextFunction} next
  * @returns {void} hash le mot de passe et l'attribue avec l'email
  */
-
 exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
@@ -53,8 +51,6 @@ exports.signup = (req, res, next) => {
  * @param {nextFunction} next 
  * @returns {void} compare le mot de passe avec le user.password
  */
-
-
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email })
   .then( user => {
@@ -71,8 +67,7 @@ exports.login = (req, res, next) => {
         userId: user._id,
         token: jwt.sign(
           { userId: user._id },
-          //@ts-ignore
-          process.env.JWT_PASS,
+          process.env["JWT_PASS"],
           { expiresIn: '24h' }
         )
       })

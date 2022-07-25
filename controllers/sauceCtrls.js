@@ -8,6 +8,11 @@
  * @typedef {Object} idSauceInParams
  * @property {Object} params
  * @property {String} params.id   l'id de la sauce
+ * 
+ * @typedef {Object} idlike
+ * @property {object} params
+ * @property {String} params.id   l'id de la sauceObject
+ * 
  */
 
 const fs = require('fs');
@@ -68,7 +73,7 @@ exports.getOneSauce = async (req, res, next) => {
 };
 
 /**
- * ajoute une sauce
+ * modifie une sauce
  *
  * @param {request & idSauceInParams & multerRequest} req
  * @param {response} res
@@ -93,7 +98,13 @@ exports.modifySauce = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
-
+/**
+ * 
+ * @param {request & idSauceInParams & multerRequest} req
+ * @param {response} res 
+ * @param {nextFunction} next 
+ * @return {void}
+ */
 exports.deleteSauce = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })
     .then((Sauce) => {
@@ -106,7 +117,14 @@ exports.deleteSauce = (req, res, next) => {
     })
     .catch((error) => res.status(500).json({ error }));
 };
-
+/**
+ * 
+ * @param {idSauceInParams} req 
+ * @param {response} res 
+ * @param  {nextFunction} next 
+ * 
+ * @return {void} retourne la liste des sauces
+ */
 exports.getAllSauce = (req, res, next) => {
   Sauce.find()
     .then((sauces) => {
@@ -120,7 +138,13 @@ exports.getAllSauce = (req, res, next) => {
 };
 
 
-
+/**
+ *  gestion des likes
+ * @param {request & idlike & userId & idSauceInParams} req
+ * @param {response} res 
+ * @param {nextFunction} next 
+ * @return {void} 
+ */
 
 
 exports.likeDislike = (req, res, next) => {

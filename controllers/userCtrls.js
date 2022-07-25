@@ -2,7 +2,7 @@
 /**
 
  * @typedef {object}  user
- * @property {string} name The name of theemail
+ * @property {string} name The name of the email
  * @property  {string} password 
  *  */
 

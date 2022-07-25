@@ -4,12 +4,12 @@
  * @typedef {import("express").NextFunction} nextFunction
  * @typedef {import("../middleware/auth").authentifiedRequest} authentifiedRequest
  * @typedef {import("../middleware/multer-config").multerRequest} multerRequest
- * @typedef {import("../controllers/saucectrls").createSauce} createSauce
- *
- * @typedef {import("../controllers/saucectrls").getOneSauce} getOneSauce
- * @typedef {import("../controllers/saucectrls").modifySauce} modifySauce
- * @typedef {import("../controllers/saucectrls").deleteSauce} deleteSauce
- */
+//  * @typedef {import("../controllers/saucectrls").createSauce} createSauce
+//  *
+//  * @typedef {import("../controllers/saucectrls").getOneSauce} getOneSauce
+//  * @typedef {import("../controllers/saucectrls").modifySauce} modifySauce
+//  * @typedef {import("../controllers/saucectrls").deleteSauce} deleteSauce
+*/
 
 
 

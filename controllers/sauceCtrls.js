@@ -11,7 +11,7 @@
  * 
  * @typedef {Object} idlike
  * @property {object} params
- * @property {String} params.id   l'id de la sauceObject
+ * @property {String} params.id   l'id du like 
  * 
  */
 
@@ -140,13 +140,13 @@ exports.getAllSauce = (req, res, next) => {
 
 /**
  *  gestion des likes
- * @param {request & idlike & userId & idSauceInParams} req
+ * @param  {request & idlike & userId & idSauceInParams} req
  * @param {response} res 
  * @param {nextFunction} next 
  * @return {void} 
  */
 
-
+//@ts-ignore
 exports.likeDislike = (req, res, next) => {
 
   // Pour la route READ = Ajout/suppression d'un like / dislike à une sauce

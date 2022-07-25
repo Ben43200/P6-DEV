@@ -1,5 +1,9 @@
 
 /**
+ * /**
+ * @typedef {import("express").Request} request
+ * @typedef {import("express").Response} response
+ * @typedef {import("express").NextFunction} nextFunction
 
  * @typedef {object}  user
  * @property {string} name The name of the email
@@ -17,7 +21,13 @@ const User = require('../models/User');
 
 
 
-
+/**
+ * 
+ * @param {request & user} req
+ * @param {response} res 
+ * @param {nextFunction} next
+ * @returns {void} hash le mot de passe et l'attribue avec l'email
+ */
 
 exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
@@ -34,7 +44,13 @@ exports.signup = (req, res, next) => {
 };
 
 
-
+/**
+ * 
+ * @param {request} req  req.body.email
+ * @param {response} res req.body.password
+ * @param {nextFunction} next 
+ * @returns {void} compare le mot de passe avec le user.password
+ */
 
 
 exports.login = (req, res, next) => {

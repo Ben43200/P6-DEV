@@ -8,11 +8,13 @@
  * @typedef {object}  user
  * @property {string} name The name of the email
  * @property  {string} password 
+ * 
+ 
  *  */
 
   
 
-    //@ts-ignore        
+      
   
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
